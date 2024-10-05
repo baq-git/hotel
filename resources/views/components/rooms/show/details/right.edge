@@ -1,0 +1,74 @@
+<div class="rounded-xl bg-white shadow-lg h-full">
+  <div class="flex flex-col space-y-1.5 p-6">
+    <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
+      Room Details
+    </h3>
+    <p class="text-sm text-muted-foreground">
+      Spacious room with modern amenities
+    </p>
+  </div>
+  <div class="p-6">
+    <p class="mb-4">
+      {{ roomType.description }}
+    </p>
+    <div class="flex flex-wrap gap-4 mb-4">
+      <div class="badge bagde-lg badge-ghost py-3 gap-2 border border-primary">
+        @svg('iconoir:group')
+        Sleeps {{ roomType.capacity }}
+      </div>
+      <div class="badge bagde-lg badge-ghost py-3 gap-2 border border-primary">
+        35 m²
+      </div>
+      <div class="badge bagde-lg badge-ghost py-3 gap-2 border border-primary">
+        City view
+      </div>
+    </div>
+    <h3 class="font-semibold mb-2" data-id="33">
+      Amenities
+    </h3>
+    <ul class="grid grid-cols-2 gap-2" data-id="34">
+      <li class="flex items-center" data-id="35">
+        @svg('iconoir:wifi', {
+          width: 24,
+          height: 24
+        })
+        <span class="ml-2" data-id="36">Free Wi-Fi</span>
+      </li>
+      <li class="flex items-center" data-id="35">
+        @svg('iconoir:modern-tv', {
+          width: 24,
+          height: 24
+        })
+        <span class="ml-2" data-id="36">Flat-screen TV</span>
+      </li>
+      <li class="flex items-center" data-id="35">
+        @svg('iconoir:coffee-cup', {
+          width: 24,
+          height: 24
+        })
+        <span class="ml-2" data-id="36">Coffee maker</span>
+      </li>
+      <li class="flex items-center" data-id="35">
+        @svg('iconoir:fridge', {
+          width: 24,
+          height: 24
+        })
+        <span class="ml-2" data-id="36">Mini-fridge</span>
+      </li>
+      <li class="flex items-center" data-id="35">
+        @svg('iconoir:parking', {
+          width: 24,
+          height: 24
+        })
+        <span class="ml-2" data-id="36">Free parking</span>
+      </li>
+      <li class="flex items-center" data-id="35">
+        @svg('iconoir:air-conditioner', {
+          width: 24,
+          height: 24
+        })
+        <span class="ml-2" data-id="36">Air conditioning</span>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+@layout.app({ title: "HomePage" })
+  @slot('meta')
+    <meta name="description" content="Hotel with Room reservation" />
+  @endslot
+
+  @include('components/home/sidebar/index')
+  <section class="my-28 w-fit mx-auto relative overflow-hidden">
+    @include('components/home/room/board')
+  </section>
+@end

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html class="bg-gray-50" data-theme="lofi">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      {{ title || "Adonisjs + HTMX" }}
+    </title>
+    @if ($slots.meta)
+      {{{ await $slots.meta() }}}
+    @endif
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+  </head>
+  <body>
+    @include('partials/layout/navbar')
+    <main>
+      {{{ await $slots.main() }}}
+    </main>
+  </body>
+</html>

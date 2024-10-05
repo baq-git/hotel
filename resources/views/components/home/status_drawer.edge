@@ -1,0 +1,26 @@
+<div
+  x-show="isOpenDrawer"
+  x-transition:enter="transition duration-100"
+  x-transition:enter-start="opacity-0 scale-90"
+  x-transition:enter-end="opacity-100 scale-100"
+  x-transition:leave="transition duration-100 delay-500"
+  x-transition:leave-start="opacity-100 scale-100"
+  x-transition:leave-end="opacity-0 scale-90"
+  class="toast toast-center"
+>
+  <div class="menu menu-horizontal rounded-lg p-4 bg-white min-w-[25vw] justify-between">
+    <div class="badge border-none bg-green-200">
+      Occupied
+    </div>
+    <div class="badge border-none bg-blue-200">
+      Overnight
+    </div>
+    <div class="badge border-none bg-yellow-200">
+      Staff Report
+    </div>
+    <div class="badge border-none bg-neutral-200 ">
+      Due Out
+    </div>
+  </div>
+</div>
+

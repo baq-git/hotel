@@ -1,0 +1,38 @@
+@let(id = room.id)
+@let(roomNumber = room.roomNumber)
+@let(status = room.status)
+@let(roomType = room.roomTypeId)
+@let(isDisabled = status === "Occupied" ? true : false)
+
+<div class="card bg-base-100 shadow min-h-40">
+  <div class="card-body justify-between p-4">
+    <h2 class="card-title justify-between">
+      {{ roomNumber }}
+      @if(status === "Occupied")
+        <div class="badge bg-green-200">
+          {{ status }}
+        </div>
+      @elseif(status === "Over Night")
+        <div class="badge bg-blue-200">
+          {{ status }}
+        </div>
+      @elseif(status === "Due Out")
+        <div class="badge bg-neutral-200">
+          {{ status }}
+        </div>
+      @else
+        <div class="badge bg-yellow-200">
+          {{ status }}
+        </div>
+      @end
+    </h2>
+    <div class="card-actions justify-between">
+      <a href="{{ route('rooms.show', {id}) }}" class="btn btn-sm btn-outline" role="button">
+        View Details
+      </a>
+      <button class="btn btn-sm btn-primary" role="button">
+        Book
+      </button>
+    </div>
+  </div>
+</div>

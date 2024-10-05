@@ -1,0 +1,406 @@
+@layout.app({ title: "HomePage" })
+  @slot('meta')
+    <meta name="description" content="Hotel with Room reservation" />
+  @endslot
+
+  <div class="container mx-auto p-4" data-id="1">
+    <div class="grid gap-6 md:grid-cols-2" data-id="2">
+      <div class="rounded-lg border bg-card text-card-foreground shadow-sm" data-id="3" data-v0-t="card">
+        <div class="p-6" data-id="4">
+          <div class="flex justify-between items-center mb-4" data-id="5">
+            <h2 class="text-2xl font-bold" data-id="6">
+              Current Booking
+            </h2>
+            <button
+              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10"
+              data-id="7"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-printer h-4 w-4"
+                data-id="8"
+              >
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+
+                <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" />
+
+                <rect x="6" y="14" width="12" height="8" rx="1" />
+
+              </svg>
+            </button>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4" data-id="9">
+            <div data-id="10">
+              <img
+                data-id="11"
+                alt="Room"
+                class="w-full h-48 object-cover rounded-lg"
+                width="256"
+                height="192"
+                style="aspect-ratio: 256 / 192; object-fit: cover;"
+                src="/placeholder.svg"
+              />
+              <button
+                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full mt-2"
+                data-id="12"
+              >
+                See room details
+            </button>
+            </div>
+            <div class="space-y-2" data-id="13">
+              <div class="text-orange-500 flex items-center" data-id="14">
+                <span class="mr-1" data-id="15">⏰</span>Due out - 08:59
+              </div>
+              <h3 class="text-xl font-semibold" data-id="16">
+                Glenn Zimmerman
+              </h3>
+              <p class="text-sm text-gray-500" data-id="17">
+                Order ID: #5550114
+              </p>
+              <div class="grid grid-cols-2 gap-2 text-sm" data-id="18">
+                <div data-id="19">
+                  <p class="font-semibold" data-id="20">
+                    Check in
+                  </p>
+                  <p data-id="21">
+                    Tue, 21 Mar 2023
+                  </p>
+                </div>
+                <div data-id="22">
+                  <p class="font-semibold" data-id="23">
+                    Check out
+                  </p>
+                  <p data-id="24">
+                    Thu, 23 mar 2023
+                  </p>
+                </div>
+                <div data-id="25">
+                  <p class="font-semibold" data-id="26">
+                    Guest
+                  </p>
+                  <p data-id="27">
+                    2 Adults
+                  </p>
+                </div>
+                <div data-id="28">
+                  <p class="font-semibold" data-id="29">
+                    Room Type
+                  </p>
+                  <p data-id="30">
+                    Deluxe Suites
+                  </p>
+                </div>
+                <div data-id="31">
+                  <p class="font-semibold" data-id="32">
+                    Room Plan
+                  </p>
+                  <p data-id="33">
+                    Extra blanket
+                  </p>
+                </div>
+                <div data-id="34">
+                  <p class="font-semibold" data-id="35">
+                    Room Number
+                  </p>
+                  <p data-id="36">
+                    Room 132
+                  </p>
+                </div>
+              </div>
+              <div data-id="37">
+                <p class="font-semibold" data-id="38">
+                  Guest Comment/Request
+                </p>
+                <p class="text-sm" data-id="39">
+                  No request
+                </p>
+              </div>
+              <div data-id="40">
+                <p class="font-semibold" data-id="41">
+                  Extras
+                </p>
+                <div class="flex space-x-4" data-id="42">
+                  <div class="flex items-center space-x-2" data-id="43">
+                    <button
+                      type="button"
+                      role="checkbox"
+                      aria-checked="true"
+                      data-state="checked"
+                      value="on"
+                      class="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+                      id="breakfast"
+                      data-id="44"
+                    >
+                      <span
+                        data-state="checked"
+                        class="flex items-center justify-center text-current"
+                        style="pointer-events: none;"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-check h-4 w-4"
+                        >
+                          <path d="M20 6 9 17l-5-5" />
+
+                        </svg>
+                      </span>
+                    </button>
+                    <label for="breakfast" data-id="45">Breakfast</label>
+                  </div>
+                  <div class="flex items-center space-x-2" data-id="46">
+                    <button
+                      type="button"
+                      role="checkbox"
+                      aria-checked="true"
+                      data-state="checked"
+                      value="on"
+                      class="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+                      id="dinner"
+                      data-id="47"
+                    >
+                      <span
+                        data-state="checked"
+                        class="flex items-center justify-center text-current"
+                        style="pointer-events: none;"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-check h-4 w-4"
+                        >
+                          <path d="M20 6 9 17l-5-5" />
+
+                        </svg>
+                      </span>
+                    </button>
+                    <label for="dinner" data-id="48">Dinner</label>
+                  </div>
+                  <div class="flex items-center space-x-2" data-id="49">
+                    <button
+                      type="button"
+                      role="checkbox"
+                      aria-checked="true"
+                      data-state="checked"
+                      value="on"
+                      class="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+                      id="laundry"
+                      data-id="50"
+                    >
+                      <span
+                        data-state="checked"
+                        class="flex items-center justify-center text-current"
+                        style="pointer-events: none;"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-check h-4 w-4"
+                        >
+                          <path d="M20 6 9 17l-5-5" />
+
+                        </svg>
+                      </span>
+                    </button>
+                    <label for="laundry" data-id="51">Laundry</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-lg border bg-card text-card-foreground shadow-sm" data-id="52" data-v0-t="card">
+        <div class="p-6" data-id="53">
+          <h2 class="text-2xl font-bold mb-4" data-id="54">
+            Booking Summary
+          </h2>
+          <div class="space-y-2" data-id="55">
+            <div class="flex justify-between" data-id="56">
+              <span data-id="57">Room Total (1 night)</span>              <span data-id="58">300.00</span>
+            </div>
+            <div class="flex justify-between" data-id="59">
+              <span data-id="60">Extra Person</span>              <span data-id="61">0.00</span>
+            </div>
+            <div class="flex justify-between" data-id="62">
+              <span data-id="63">Extras</span>              <span data-id="64">30.00</span>
+            </div>
+            <div class="flex justify-between font-semibold" data-id="65">
+              <span data-id="66">Subtotal</span>              <span data-id="67">330.00</span>
+            </div>
+            <div class="flex justify-between text-green-600" data-id="68">
+              <span data-id="69">Discount</span>              <span data-id="70">-33.00(10%)</span>
+            </div>
+            <div class="flex justify-between" data-id="71">
+              <span data-id="72">Fixed Amount Taxes</span>              <span data-id="73">13.00</span>
+            </div>
+            <div class="flex justify-between text-xl font-bold text-orange-500" data-id="74">
+              <span data-id="75">Total</span>              <span data-id="76">320.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="rounded-lg border bg-card text-card-foreground shadow-sm mt-6"
+      data-id="77"
+      data-v0-t="card"
+    >
+      <div class="p-6" data-id="78">
+        <h2 class="text-2xl font-bold mb-4" data-id="79">
+          Booking History
+        </h2>
+        <div class="relative w-full overflow-auto">
+          <table class="w-full caption-bottom text-sm" data-id="80">
+            <thead class="[&amp;_tr]:border-b" data-id="81">
+              <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted" data-id="82">
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                  data-id="83"
+                >
+                  Order ID
+                </th>
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                  data-id="84"
+                >
+                  Order Date
+                </th>
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                  data-id="85"
+                >
+                  Room
+                </th>
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                  data-id="86"
+                >
+                  No.
+                </th>
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                  data-id="87"
+                >
+                  Check in
+                </th>
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                  data-id="88"
+                >
+                  Check out
+                </th>
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                  data-id="89"
+                >
+                  Guest
+                </th>
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                  data-id="90"
+                >
+                </th>
+              </tr>
+            </thead>
+            <tbody class="[&amp;_tr:last-child]:border-0" data-id="91">
+              <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted" data-id="92">
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0" data-id="93">
+                  5500139
+                </td>
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0" data-id="94">
+                  Wed, 22 Mar 2023
+                </td>
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0" data-id="95">
+                  Deluxe
+                </td>
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0" data-id="96">
+                  F1 131
+                </td>
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0" data-id="97">
+                  Thu, 23 Mar 2023
+                </td>
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0" data-id="98">
+                  Sat, 25 Mar 2023
+                </td>
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0" data-id="99">
+                  2 Guests
+                </td>
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0" data-id="100">
+                  <button
+                    class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10"
+                    data-id="101"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-ellipsis-vertical h-4 w-4"
+                      data-id="102"
+                    >
+                      <circle cx="12" cy="12" r="1" />
+
+                      <circle cx="12" cy="5" r="1" />
+
+                      <circle cx="12" cy="19" r="1" />
+
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="flex justify-end space-x-4 mt-4" data-id="103">
+          <button
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+            data-id="104"
+          >
+            Close
+        </button>
+          <button
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+            data-id="105"
+          >
+            <span class="mr-2" data-id="106">✓</span>Checked Out
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+@end

@@ -1,0 +1,13 @@
+<div class="w-full mb-4">
+  <select name="status" class="select select-bordered w-full max-w-xs">
+    <option value="">
+      All
+    </option>
+    @each(item in roomStatuses)
+      <option value="{{ item.status }}">
+        {{ item.status }}
+      </option>
+    @end
+  </select>
+</div>
+

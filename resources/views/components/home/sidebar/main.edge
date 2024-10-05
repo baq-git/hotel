@@ -1,0 +1,30 @@
+<div
+  x-show="isSidebarOpen"
+  x-transition:enter="transition duration-200"
+  x-transition:enter-start="-translate-x-full opacity-0"
+  x-transition:enter-end="translate-x-0 opacity-100"
+  x-transition:leave="transition duration-200"
+  x-transition:leave-start="translate-x-0 opacity-100"
+  x-transition:leave-end="-translate-x-full opacity-0"
+  class="fixed z-50 top-28 left-8 flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 h-[70vh] w-full max-w-[15rem] p-4 shadow-xl shadow-blue-gray-900/5"
+>
+  <div class="menu bg-white w-full rounded-box p-0">
+    @include('components/home/sidebar/search_roomnumber')
+    @include('components/home/sidebar/submenu_control')
+    @include('components/home/sidebar/select_status')
+    @include('components/home/sidebar/select_roomtype')
+  </div>
+
+  <!-- Button to close sidebar -->
+  <div class="mt-auto">
+    <div class="flex justify-between">
+      <button
+        x-on:click="isSidebarOpen = false; isSubmenuOpen = false; isSidebarButtonOpen = true"
+        class="btn btn-sm ml-auto"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+

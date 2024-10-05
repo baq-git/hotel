@@ -1,0 +1,14 @@
+<div class="w-full mb-4">
+  <select name="roomTypeId" class="select select-bordered w-full max-w-xs">
+    <option value="">
+      All
+    </option>
+    {{ inspect(roomTypes[0]) }}
+    @each(type in roomTypes)
+      <option value="{{ type.id }}">
+        {{ type.typeName }}
+      </option>
+    @end
+  </select>
+</div>
+

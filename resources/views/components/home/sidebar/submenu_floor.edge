@@ -1,0 +1,24 @@
+<div
+  x-show="isSubmenuOpen"
+  x-transition:enter="transition duration-200"
+  x-transition:enter-start="-translate-x-full opacity-0"
+  x-transition:enter-end="translate-x-0 opacity-100 "
+  x-transition:leave="transition duration-200"
+  x-transition:leave-start="translate-x-0 opacity-100"
+  x-transition:leave-end="-translate-x-full opacity-0"
+  class="fixed top-24 z-10 left-[18rem] menu flex flex-row pl-4 pr-0 py-4 bg-white rounded-box w-full max-w-[15rem] overflow-y-scroll h-fit max-h-[50vh] shadow-xl shadow-blue-gray-900/5"
+>
+  @each(item in roomFloors)
+    <label class="label cursor-pointer hover:bg-gray-100 p-4 rounded-md w-full">
+      <span class="label-text">{{ item.floor === '0' ? 'Floor G' : `Floor ${item.floor}` }}</span>
+      <input
+        type="checkbox"
+        name="floor"
+        value="{{ item.floor }}"
+        checked="checked"
+        class="checkbox checkbox-primary"
+      />
+    </label>
+  @end
+</div>
+

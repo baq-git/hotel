@@ -1,0 +1,13 @@
+@layout.app({ title: "Check Room Details" })
+  @slot('meta')
+    <meta name="description" content="Room Details" />
+  @endslot
+  @let(roomType = room.roomType)
+
+  <div class="font-sans relative my-28">
+    @include('components/rooms/show/details/index')
+    @include('components/rooms/show/description/index')
+  </div>
+</div>
+@end
+

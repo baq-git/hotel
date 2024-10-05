@@ -1,0 +1,9 @@
+<div hx-room-board class="relative flex items-center justify-center">
+  <div class="grid grid-cols-5 gap-2 w-[70vw]">
+    @each(room in rooms)
+      @!component('components/home/room/card', { room })
+    @end
+  </div>
+
+</div>
+
