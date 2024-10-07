@@ -1,17 +1,15 @@
 import type { HttpContext } from '@adonisjs/core/http';
 import RoomService from '#services/room_service';
-import logger from '@adonisjs/core/services/logger';
 import RoomType from '#models/room_type';
 
 export default class HomeController {
-  async index({ view, request }: HttpContext) {
+  async index({ view, request, auth }: HttpContext) {
+    await auth.check();
     const { floor, roomTypeId, status, roomNumber } = request.qs();
     const rooms = await RoomService.getFilteredList({ floor, roomTypeId, status, roomNumber });
     const roomStatuses = await RoomService.getDistinct('status');
     const roomFloors = await RoomService.getDistinct('floor');
     const roomTypes = await RoomType.all();
-
-    logger.info(roomTypes);
 
     return view.render('pages/home', { rooms, roomStatuses, roomFloors, roomTypes });
   }

@@ -1,5 +1,7 @@
-import { BaseModel, column } from '@adonisjs/lucid/orm';
+import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm';
 import { DateTime } from 'luxon';
+import Room from '#models/room';
+import type { HasMany } from '@adonisjs/lucid/types/relations';
 
 export default class Hotel extends BaseModel {
   @column({ isPrimary: true })
@@ -20,11 +22,14 @@ export default class Hotel extends BaseModel {
   @column()
   declare star: number | null;
 
-  @column.date()
-  declare checkInTime: DateTime;
+  @hasMany(() => Room)
+  declare rooms: HasMany<typeof Room>;
 
   @column.date()
-  declare checkOutTime: DateTime;
+  declare checkinTime: DateTime;
+
+  @column.date()
+  declare checkoutTime: DateTime;
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime;

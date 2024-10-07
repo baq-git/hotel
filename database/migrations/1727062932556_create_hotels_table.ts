@@ -11,6 +11,8 @@ export default class extends BaseSchema {
       table.string('phone').notNullable();
       table.string('email').notNullable();
       table.float('star');
+      table.date('checkin_time');
+      table.date('checkout_time');
 
       table.timestamp('created_at').notNullable();
       table.timestamp('updated_at').nullable();

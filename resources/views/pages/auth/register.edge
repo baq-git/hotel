@@ -1,0 +1,50 @@
+@layout.app({ title: "Register your account" })
+  @slot('meta')
+    <meta name="description" content="Resgiter or Login your Account" />
+  @endslot
+
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="card w-full max-w-md shadow-lg bg-white">
+      <form class="card-body gap-4" method="POST" action="{{ route('auth.register.store') }}">
+        {{ csrfField() }}
+        <h2 class="card-title text-2xl font-bold mb-4">
+          Register
+        </h2>
+
+        @include('partials/errors/session')
+
+        <label class="input input-bordered flex items-center gap-2">
+          @svg('iconoir:user', {
+          width: 24,
+          height: 24
+          })
+          <input name="fullName" type="text" class="grow" placeholder="Your Name" />
+        </label>
+        <label class="input input-bordered flex items-center gap-2">
+          @svg('iconoir:mail', {
+          width: 24,
+          height: 24
+          })
+          <input type="text" name="email" class="grow" placeholder="ori@mail.com" />
+        </label>
+        <label class="input input-bordered flex items-center gap-2">
+          @svg('iconoir:key', {
+          width: 24,
+          height: 24
+          })
+          <input type="password" name="password" class="grow" />
+        </label>
+        <div class="form-control mt-4">
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+        <div class="text-center mt-4">
+          Already have an account?
+          <a href="{{ route('auth.login.show') }}" class="link link-primary">
+            Login
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+@end
+
