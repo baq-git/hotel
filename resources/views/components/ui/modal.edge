@@ -1,0 +1,21 @@
+@if(key === 'redirect_to_login')
+  <dialog id="redirect_to_login" class="modal">
+    <div class="modal-box">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      </form>
+      <h3 class="text-lg font-bold">
+        Authentication!
+      </h3>
+      <p class="py-4">
+        You need permission to perform this action. Login your account to do this.
+      </p>
+      <div class="flex justify-end gap-2">
+        <a href="{{ route('auth.login.show') }}" class="btn btn-primary">Login</a>
+        <form method="dialog">
+          <button class="btn">Close</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+@end

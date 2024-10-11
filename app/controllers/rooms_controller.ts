@@ -1,7 +1,5 @@
-import Room from '#models/room';
 import RoomService from '#services/room_service';
 import type { HttpContext } from '@adonisjs/core/http';
-import logger from '@adonisjs/core/services/logger';
 
 export default class RoomsController {
   async index({ view, request }: HttpContext) {
@@ -12,10 +10,8 @@ export default class RoomsController {
 
   async show({ params, view }: HttpContext) {
     const { id } = params;
-    const room = await Room.query().where('id', id).preload('hotel').preload('roomType').first();
-
-    logger.info(room);
-
+    const room = await RoomService.getRoomById(id);
+    console.log(typeof id);
     return view.render('pages/rooms/show', { room });
   }
 }

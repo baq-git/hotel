@@ -3,7 +3,7 @@ import { searchRoomValidator } from '#validators/room_search_validator';
 import { Infer } from '@vinejs/vine/types';
 
 export default class RoomService {
-  static sortOptions() {}
+  static sortOptions() { }
 
   static getFilteredList(filters: Infer<typeof searchRoomValidator>) {
     const { roomTypeId, roomNumber, status, floor } = filters;
@@ -19,5 +19,9 @@ export default class RoomService {
 
   static getDistinct(property: string) {
     return Room.query().distinct(property);
+  }
+
+  static getRoomById(id: number | string) {
+    return Room.query().where({ id }).preload('roomType').first();
   }
 }

@@ -1,0 +1,106 @@
+<div class="rounded-box border shadow-lg bg-white">
+  <div class="p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-2xl font-bold">
+        Current Booking
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="flex flex-col justify-between gap-8">
+        <div class="skeleton h-full w-full">
+        </div>
+        <a href="{{ route('rooms.show',  {id: booking.roomId} ) }}" class="btn btn-sm btn-outline w-full">
+          See room details
+        </a>
+      </div>
+      <div class="space-y-2">
+        <div class="text-orange-500 flex items-center">
+          <span class="mr-1">⏰</span>Due out - 08:59
+        </div>
+        <h3 class="text-xl font-semibold">
+          {{ guest.firstName }} {{ guest.lastName }}
+        </h3>
+        <p class="text-sm text-gray-500">
+          Booking ID: #{{booking.bookingId}}
+        </p>
+        <div class="grid grid-cols-2 gap-2 text-sm">
+          <div>
+            <p class="font-semibold">
+              Check in
+            </p>
+            <p>
+              {{localeCheckinDate}}
+            </p>
+          </div>
+          <div>
+            <p class="font-semibold">
+              Check out
+            </p>
+            <p>
+              {{localeCheckoutDate}}
+            </p>
+          </div>
+          <div>
+            <p class="font-semibold">
+              Capacity
+            </p>
+            <p>
+              {{roomType.capacity}}
+            </p>
+          </div>
+          <div>
+            <p class="font-semibold">
+              Room Type
+            </p>
+            <p>
+              {{roomType.typeName}}
+            </p>
+          </div>
+          <div>
+            <p class="font-semibold">
+              Status
+            </p>
+            <p>
+              {{room.status}}
+            </p>
+          </div>
+          <div>
+            <p class="font-semibold">
+              Room Number
+            </p>
+            <p>
+              Room {{room.roomNumber}}
+            </p>
+          </div>
+        </div>
+        <div>
+          <p class="font-semibold">
+            Guest Comment/Request
+          </p>
+          <p class="text-sm">
+            No request
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold">
+            Extras
+          </p>
+          <div class="flex space-x-4">
+            <div class="flex items-center space-x-2">
+              <input id="breakfast" name="breakfast" type="checkbox" class="checkbox rounded-full" value="10" x-model.number="extraValues"/>
+              <label class="cursor-pointer" for="breakfast">Breakfast</label>
+            </div>
+            <div class="flex items-center space-x-2">
+              <input id="dinner" name="dinner" type="checkbox" class="checkbox rounded-full" value="12" x-model.number="extraValues"/>
+              <label class="cursor-pointer" for="dinner">Dinner</label>
+            </div>
+            <div class="flex items-center space-x-2">
+              <input id="laundry" name="laundry" type="checkbox" class="checkbox rounded-full" value="15" x-model.number="extraValues"/>
+              <label class="cursor-pointer" for="laundry">Laundry</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

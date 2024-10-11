@@ -1,0 +1,84 @@
+<div class="rounded-box border shadow-lg bg-white mt-8">
+  <div class="p-6">
+    <div class="flex flex-row justify-between">
+      <h2 class="text-2xl font-bold mb-4">
+        Booking History
+      </h2>
+      <button
+        hx-get="{{route('getBookingsByRoomId', {roomId: booking.roomId})}}"
+        hx-target="[hx-bookings-by-room]"
+        hx-swap="outerHTML"
+        class="btn btn-circle btn-sm btn-ghost">
+        @svg('iconoir:eye', {width: 20, height: 20})
+      </button>
+    </div>
+    <div class="overflow-x">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              Order ID
+            </th>
+            <th>
+              Order Date
+            </th>
+            <th>
+              Room
+            </th>
+            <th>
+              No.
+            </th>
+            <th>
+              Check in
+            </th>
+            <th>
+              Check out
+            </th>
+            <th>
+              Guest
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr hx-bookings-by-room>
+            <td>
+              5500139
+            </td>
+            <td>
+              Wed, 22 Mar 2023
+            </td>
+            <td>
+              Deluxe
+            </td>
+            <td>
+              F1 131
+            </td>
+            <td>
+              Thu, 23 Mar 2023
+            </td>
+            <td>
+              Sat, 25 Mar 2023
+            </td>
+            <td>
+              2 Guests
+            </td>
+            <td>
+              <button class="btn btn-sm btn-square">
+                @svg('iconoir:more-horiz', {width: 16, height: 16})
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flex justify-end space-x-4 mt-4">
+      <button class="btn">
+        Close
+      </button>
+      <button class="btn btn-primary">
+        <span class="mr-2">✓</span>Checked Out
+      </button>
+    </div>
+  </div>
+</div>

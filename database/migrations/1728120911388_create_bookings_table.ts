@@ -6,7 +6,7 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('booking_id');
-      table.integer('guest_id').unsigned().references('guest_id').inTable('guests').notNullable();
+      table.integer('guest_id').unsigned().references('id').inTable('guests').notNullable();
       table.integer('room_id').unsigned().references('id').inTable('rooms').notNullable();
       table.float('total_price').notNullable();
       table.date('checkin_date').notNullable();
@@ -21,4 +21,3 @@ export default class extends BaseSchema {
     this.schema.dropTable(this.tableName);
   }
 }
-

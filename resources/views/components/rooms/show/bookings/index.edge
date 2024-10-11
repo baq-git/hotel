@@ -1,0 +1,54 @@
+<div class="container mx-auto">
+  <div class="flex flex-col py-6">
+    <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight" data-id="44">
+      Book this room
+    </h3>
+  </div>
+  <div class="mt-8 p-6 rounded-box shadow-lg bg-white border-base-300">
+    <div class="stats bg-transparent w-full">
+      <div class="stat place-items-center">
+        <div class="stat-title">
+          Price Per Night
+        </div>
+        <div class="stat-value">
+          {{ roomType.pricePerNight }}/h
+        </div>
+      </div>
+
+      <div class="stat place-items-center">
+        <div class="stat-title">
+          Price Per Hour
+        </div>
+        <div class="stat-value">
+          {{ roomType.pricePerHour }}/h
+        </div>
+      </div>
+    </div>
+    <form method="POST" action="{{ route('bookings.store') }}">
+      {{ csrfField() }}
+      <div class="grid gap-4 sm:grid-cols-2">
+        @!component('components/ui/datepicker', { label: 'Checkin Date', name: 'checkinDate' })
+        @!component('components/ui/datepicker', { label: 'Checkout Date', name: 'checkoutDate' })
+      </div>
+      <div>
+        @if(auth.user)
+          <input type="text" name="roomId" value="{{ room.id }}" hidden />
+          <input type="text" name="guestId" value="1" hidden />
+          <input type="number" name="pricePerHour" value="{{ roomType.pricePerHour }}" hidden />
+          <input type="number" name="pricePerNight" value="{{ roomType.pricePerNight }}" hidden />
+        @end
+      </div>
+      <div class="flex items-center p-4">
+        @if(auth.user)
+          <button type="submit" class="btn btn-primary w-full">
+            Book Now
+          </button>
+        @else
+          <button type="button" class="btn btn-primary w-full" onclick="redirect_to_login.showModal()">Book Now</button>
+        @end
+      </div>
+    </form>
+  </div>
+</div>
+@!component('components/ui/modal', {key: 'redirect_to_login'})
+

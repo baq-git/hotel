@@ -1,0 +1,15 @@
+<div class="rounded-box border shadow-lg bg-white">
+  <div class="p-6">
+    <h2 class="text-2xl font-bold mb-4">
+      Booking Summary
+    </h2>
+    <div class="space-y-2">
+      <div class="flex justify-between"><span>Room Total - {{diffDateTime.days}} night(s)</span><span x-text="roomTotal"></span></div>
+      <div class="flex justify-between"><span>Extras</span><span x-text="extras"></span></div>
+      <div class="flex justify-between font-semibold"><span>Subtotal</span><span x-text="subTotal"></span></div>
+      <div class="flex justify-between text-green-600"><span>Discount</span> <span x-text="'- ' + subTotal * discount / 100 + ` (${discount})%`"></span></div>
+      <div class="flex justify-between"><span>Fixed Amount Taxes</span><span x-text="taxes">13.00</span></div>
+      <div class="flex justify-between text-xl font-bold text-orange-500"><span>Total</span><span x-text="total"></span></div>
+    </div>
+  </div>
+</div>

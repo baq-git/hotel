@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon';
-import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm';
+import { afterFind, BaseModel, belongsTo, column } from '@adonisjs/lucid/orm';
 import type { BelongsTo } from '@adonisjs/lucid/types/relations';
 import Guest from '#models/guest';
 import Room from '#models/room';
@@ -11,7 +11,9 @@ export default class Booking extends BaseModel {
   @column()
   declare guestId: number;
 
-  @belongsTo(() => Guest)
+  @belongsTo(() => Guest, {
+    foreignKey: 'guestId',
+  })
   declare guest: BelongsTo<typeof Guest>;
 
   @column()

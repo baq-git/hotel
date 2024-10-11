@@ -3,8 +3,7 @@ import RoomService from '#services/room_service';
 import RoomType from '#models/room_type';
 
 export default class HomeController {
-  async index({ view, request, auth }: HttpContext) {
-    await auth.check();
+  async index({ view, request }: HttpContext) {
     const { floor, roomTypeId, status, roomNumber } = request.qs();
     const rooms = await RoomService.getFilteredList({ floor, roomTypeId, status, roomNumber });
     const roomStatuses = await RoomService.getDistinct('status');
