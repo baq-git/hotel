@@ -11,7 +11,6 @@ export default class RoomsController {
   async show({ params, view }: HttpContext) {
     const { id } = params;
     const room = await RoomService.getRoomById(id);
-    console.log(typeof id);
     return view.render('pages/rooms/show', { room });
   }
 }

@@ -15,3 +15,9 @@ export const loginValidator = vine.compile(
     isRememberMe: vine.accepted().optional(),
   })
 );
+
+export const resetPasswordValidator = vine.compile(
+  vine.object({
+    email: vine.string().email().normalizeEmail(),
+  })
+);

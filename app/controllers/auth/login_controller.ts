@@ -1,7 +1,6 @@
 import User from '#models/user';
 import { loginValidator } from '#validators/auth';
 import type { HttpContext } from '@adonisjs/core/http';
-import logger from '@adonisjs/core/services/logger';
 
 export default class LoginController {
   async show({ view }: HttpContext) {

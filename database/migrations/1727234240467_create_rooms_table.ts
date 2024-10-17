@@ -7,6 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary().notNullable();
       table.string('room_number');
+      table.integer('floor');
       table.string('status').defaultTo('Due Out');
       table.integer('hotel_id').unsigned().references('id').inTable('hotels').onDelete('CASCADE');
       table.integer('room_type_id').unsigned().references('id').inTable('room_types');

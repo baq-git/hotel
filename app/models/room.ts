@@ -1,8 +1,9 @@
 import { DateTime } from 'luxon';
-import { BaseModel, beforeSave, belongsTo, column } from '@adonisjs/lucid/orm';
+import { BaseModel, beforeCreate, belongsTo, column } from '@adonisjs/lucid/orm';
 import type { BelongsTo } from '@adonisjs/lucid/types/relations';
 import Hotel from '#models/hotel';
 import RoomType from '#models/room_type';
+import logger from '@adonisjs/core/services/logger';
 
 export default class Room extends BaseModel {
   @column({ isPrimary: true })
@@ -29,7 +30,7 @@ export default class Room extends BaseModel {
   @column()
   declare floor: number;
 
-  @beforeSave()
+  @beforeCreate()
   static async setFloor(room: Room) {
     room.floor = Math.trunc(Number(room.roomNumber) / 100);
   }

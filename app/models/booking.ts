@@ -1,20 +1,18 @@
 import { DateTime } from 'luxon';
-import { afterFind, BaseModel, belongsTo, column } from '@adonisjs/lucid/orm';
+import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm';
 import type { BelongsTo } from '@adonisjs/lucid/types/relations';
-import Guest from '#models/guest';
 import Room from '#models/room';
+import User from '#models/user';
 
 export default class Booking extends BaseModel {
   @column({ isPrimary: true })
-  declare bookingId: number;
+  declare id: number;
 
   @column()
-  declare guestId: number;
+  declare userId: number;
 
-  @belongsTo(() => Guest, {
-    foreignKey: 'guestId',
-  })
-  declare guest: BelongsTo<typeof Guest>;
+  @belongsTo(() => User)
+  declare user: BelongsTo<typeof User>;
 
   @column()
   declare roomId: number;
@@ -25,10 +23,10 @@ export default class Booking extends BaseModel {
   @column()
   declare totalPrice: number;
 
-  @column.date()
+  @column.dateTime()
   declare checkinDate: DateTime;
 
-  @column.date()
+  @column.dateTime()
   declare checkoutDate: DateTime;
 
   @column.dateTime({ autoCreate: true })

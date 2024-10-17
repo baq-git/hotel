@@ -24,14 +24,10 @@ export default class BookingService {
     return Booking.query()
       .where('room_id', roomId)
       .preload('room', (roomsQuery) => roomsQuery.preload('roomType'))
-      .orderBy('booking_id', 'asc');
+      .orderBy('id', 'asc');
   }
 
-  static getBookingsByGuestId(guestId: number) {
-    return Booking.query()
-      .where('guest_id', guestId)
-      .preload('room')
-      .preload('guest')
-      .orderBy('booking_id', 'asc');
+  static getBookingsByUserId(userId: number) {
+    return Booking.query().where('user_id', userId).preload('room').orderBy('id', 'asc');
   }
 }

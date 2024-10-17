@@ -14,7 +14,6 @@
           {{ roomType.pricePerNight }}/h
         </div>
       </div>
-
       <div class="stat place-items-center">
         <div class="stat-title">
           Price Per Hour
@@ -32,23 +31,22 @@
       </div>
       <div>
         @if(auth.user)
-          <input type="text" name="roomId" value="{{ room.id }}" hidden />
-          <input type="text" name="guestId" value="1" hidden />
-          <input type="number" name="pricePerHour" value="{{ roomType.pricePerHour }}" hidden />
-          <input type="number" name="pricePerNight" value="{{ roomType.pricePerNight }}" hidden />
+        <input type="text" name="roomId" value="{{ room.id }}" hidden />
+        <input type="text" name="userId" value="{{ auth.user.id }}" hidden />
+        <input type="number" name="pricePerHour" value="{{ roomType.pricePerHour }}" hidden />
+        <input type="number" name="pricePerNight" value="{{ roomType.pricePerNight }}" hidden />
         @end
       </div>
       <div class="flex items-center p-4">
         @if(auth.user)
-          <button type="submit" class="btn btn-primary w-full">
-            Book Now
-          </button>
+        <button type="submit" class="btn btn-primary w-full">
+          Book Now
+        </button>
         @else
-          <button type="button" class="btn btn-primary w-full" onclick="redirect_to_login.showModal()">Book Now</button>
+        <button type="button" class="btn btn-primary w-full" onclick="redirect_to_login.showModal()">Book Now</button>
         @end
       </div>
     </form>
   </div>
 </div>
 @!component('components/ui/modal', {key: 'redirect_to_login'})
-

@@ -1,21 +1,19 @@
 @error('E_INVALID_CREDENTIALS')
-  <p class="text-sm text-red-500">
-    {{ $message }}
-  </p>
+<p class="text-sm text-red-500">
+  {{ $message }}
+</p>
 @end
-
 @inputError('email')
-  @each(message in $messages)
-    <p class="text-sm text-red-500">
-      {{ message }}
-    </p>
-  @end
+@each(message in $messages)
+<p class="text-sm text-red-500">
+  {{ message }}
+</p>
 @end
-
+@end
 @inputError('password')
-  @each(message in $messages)
-    <p class="text-sm text-red-500">
-      {{ message }}
-    </p>
-  @end
+@each(message in $messages)
+<p class="text-sm text-red-500">
+  {{ message }}
+</p>
+@end
 @end

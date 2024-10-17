@@ -3,7 +3,7 @@ import { searchRoomValidator } from '#validators/room_search_validator';
 import { Infer } from '@vinejs/vine/types';
 
 export default class RoomService {
-  static sortOptions() { }
+  static sortOptions() {}
 
   static getFilteredList(filters: Infer<typeof searchRoomValidator>) {
     const { roomTypeId, roomNumber, status, floor } = filters;

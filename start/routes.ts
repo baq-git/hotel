@@ -1,5 +1,6 @@
 import router from '@adonisjs/core/services/router';
 import { middleware } from './kernel.js';
+const PasswordResetController = () => import('#controllers/password_reset_controller');
 
 const RoomsController = () => import('#controllers/rooms_controller');
 const RegisterController = () => import('#controllers/auth/register_controller');
@@ -20,6 +21,11 @@ router
 
     router.get('/login', [LoginController, 'show']).as('login.show').use(middleware.guest());
     router.post('/login', [LoginController, 'store']).as('login.store').use(middleware.guest());
+
+    router.get('/password/forgot', [PasswordResetController, 'forgot']).as('password.forgot');
+    router.post('/password/send', [PasswordResetController, 'send']).as('password.send');
+    router.get('/password/reset', [PasswordResetController, 'reset']).as('password.reset');
+    router.post('/password/store', [PasswordResetController, 'store']).as('password.store');
   })
   .as('auth');
 
