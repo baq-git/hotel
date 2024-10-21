@@ -1,5 +1,5 @@
 import type { HttpContext } from '@adonisjs/core/http';
-import { resetPasswordValidator } from '#validators/auth';
+import { emailResetPasswordValidator, passwordResetPasswordValidator } from '#validators/auth';
 import User from '#models/user';
 import PasswordResetToken from '#models/password_reset_token';
 import router from '@adonisjs/core/services/router';
@@ -9,11 +9,11 @@ import logger from '@adonisjs/core/services/logger';
 
 export default class PasswordResetController {
   async forgot({ view }: HttpContext) {
-    return view.render('pages/auth/password_reset');
+    return view.render('pages/auth/password_forgot');
   }
 
   async send({ session, request, response }: HttpContext) {
-    const { email } = await request.validateUsing(resetPasswordValidator);
+    const { email } = await request.validateUsing(emailResetPasswordValidator);
     const user = await User.findBy('email', email);
     const token = await PasswordResetToken.generatePasswordResetToken(user);
     const resetLink = router.makeUrl('auth.password.reset', [token]);
@@ -35,11 +35,26 @@ export default class PasswordResetController {
   }
 
   async reset({ view, params }: HttpContext) {
-    const token = params.token;
-    const isValid = PasswordResetToken.verify(token);
-
+    const { token } = params;
+    const isValid = await PasswordResetToken.verify(token);
+    logger.info(isValid);
     return view.render('pages/auth/password_reset', { isValid, token });
   }
 
-  async store({ }: HttpContext) { }
+  async store({ request, response, session, auth }: HttpContext) {
+    const { password, token } = await request.validateUsing(passwordResetPasswordValidator);
+
+    const user = await PasswordResetToken.getPasswordResetUser(token);
+
+    if (!user) {
+      session.flash('error', 'Token expired or associated user could not be found');
+      return response.redirect().back();
+    }
+
+    await user.merge({ password }).save();
+    await auth.use('web').login(user);
+    await PasswordResetToken.expirePasswordResetTokens(user);
+
+    return response.redirect().toPath('/');
+  }
 }

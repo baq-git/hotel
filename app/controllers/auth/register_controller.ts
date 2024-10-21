@@ -16,4 +16,3 @@ export default class RegisterController {
     return response.redirect().toRoute('home.index');
   }
 }
-

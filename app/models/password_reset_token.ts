@@ -69,6 +69,6 @@ export default class PasswordResetToken extends BaseModel {
       .where('token', token)
       .first();
 
-    return record;
+    return !!record;
   }
 }
