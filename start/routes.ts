@@ -1,5 +1,6 @@
 import router from '@adonisjs/core/services/router';
 import { middleware } from './kernel.js';
+const AdminController = () => import('#controllers/admin/admin_controller');
 const PasswordResetController = () => import('#controllers/password_reset_controller');
 
 const RoomsController = () => import('#controllers/rooms_controller');
@@ -41,3 +42,12 @@ router.resource('/bookings', BookingsController).use('*', middleware.auth());
 router
   .get('/getBookingsByRoomId/:roomId', [BookingsController, 'getBookingsInRoom'])
   .as('getBookingsByRoomId');
+
+router
+  .get('user/:userId/myBookings', [BookingsController, 'getBookingsOfUser'])
+  .as('getBookingsByUser')
+  .use(middleware.auth());
+
+router.group(() => {
+  router.get('/admin', [AdminController, 'index']).as('admin').use(middleware.admin());
+});

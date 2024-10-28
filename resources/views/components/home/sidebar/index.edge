@@ -1,5 +1,4 @@
 <section x-data="{ isSidebarOpen: false, isSidebarButtonOpen: true, isSubmenuOpen: false }" class="">
-
   <form
     @submit.prevent=""
     hx-get="{{ route('home.search') }}"
@@ -10,7 +9,5 @@
     @include('components/home/sidebar/main')
     @include('components/home/sidebar/submenu_floor')
   </form>
-
   @include('components/home/sidebar/sidebar_button')
 </section>
-

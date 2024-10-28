@@ -6,6 +6,7 @@ import { faker } from '@faker-js/faker';
 import RoomType from '#models/room_type';
 import RoomTypes from '#enums/roomtypes';
 import { UserFactory } from '#database/factories/user_factory';
+import { DateTime } from 'luxon';
 
 export default class extends BaseSeeder {
   async run() {
@@ -14,6 +15,9 @@ export default class extends BaseSeeder {
       address: '1000 W 20th Ave, Baltimore, Maryland',
       phone: '0447917239377',
       email: 'ori@hotelmail.com',
+      star: faker.number.float({ min: 4, max: 5 }),
+      checkinTime: DateTime.now().set({ hour: 13, minute: 0 }),
+      checkoutTime: DateTime.now().set({ hour: 12, minute: 0 }),
     });
 
     await Role.createMany([

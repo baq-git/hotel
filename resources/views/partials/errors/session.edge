@@ -17,3 +17,10 @@
 </p>
 @end
 @end
+@flashMessage('notification')
+@if($message.type === 'error')
+<p class="text-sm text-red-500">
+  {{ $message.message }}
+</p>
+@end
+@end

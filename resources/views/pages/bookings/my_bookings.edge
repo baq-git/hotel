@@ -1,0 +1,52 @@
+@layout.app({ title: "My Booking" })
+@slot('meta')
+@let(hotel = (await preloadData.Hotel.all())[0])
+<meta name="description" content="All my past Booking" />
+<div class="container mt-28 mx-auto px-4 py-8" >
+  <div class="max-w-screen-md mx-auto">
+    <h1 class="text-3xl font-bold mb-6" >My Bookings</h1>
+    <div
+    x-data="{
+        tabSelected: 1,
+        tabId: $id('tabs'),
+        tabButtonClicked(tabButton){
+            this.tabSelected = tabButton.id.replace(this.tabId + '-', '');
+            this.tabRepositionMarker(tabButton);
+        },
+        tabRepositionMarker(tabButton){
+            this.$refs.tabMarker.style.width=tabButton.offsetWidth + 'px';
+            this.$refs.tabMarker.style.height=tabButton.offsetHeight + 'px';
+            this.$refs.tabMarker.style.left=tabButton.offsetLeft + 'px';
+        },
+        tabContentActive(tabContent){
+            return this.tabSelected == tabContent.id.replace(this.tabId + '-content-', '');
+        }
+    }"
+
+    x-init="tabRepositionMarker($refs.tabButtons.firstElementChild);" class="relative w-full">
+      <div x-ref="tabButtons" class="relative inline-grid items-center justify-center w-full h-10 grid-cols-2 p-1 text-gray-500 bg-gray-100 rounded-lg select-none">
+        <button :id="$id(tabId)" @click="tabButtonClicked($el);" type="button" class="relative z-20 inline-flex items-center justify-center w-full h-8 px-3 text-sm font-medium transition-all rounded-md cursor-pointer whitespace-nowrap">Upcoming</button>
+        <button :id="$id(tabId)" @click="tabButtonClicked($el);" type="button" class="relative z-20 inline-flex items-center justify-center w-full h-8 px-3 text-sm font-medium transition-all rounded-md cursor-pointer whitespace-nowrap">Past</button>
+        <div x-ref="tabMarker" class="absolute left-0 z-10 w-1/2 h-full duration-300 ease-out" x-cloak>
+          <div class="w-full h-full bg-white rounded-md shadow-sm"></div>
+        </div>
+      </div>
+      <div class="relative w-full mt-2 content">
+        <div :id="$id(tabId + '-content')" x-show="tabContentActive($el)" class="relative">
+          <!-- Tab Content 1 - Upcomming booking -->
+          <div dir="ltr" data-orientation="horizontal" class="w-full" >
+            @each(booking in bookingsByUser)
+            @include('components/bookings/my_bookings/my_booking_item')
+            @end
+          </div>
+          <div :id="$id(tabId + '-content')" x-show="tabContentActive($el)" class="relative" x-cloak>
+            <!-- Tab Content 2 - Last booking -->
+          </div>
+        </div>
+      </div>
+      <div data-state="inactive" data-orientation="horizontal" role="tabpanel" aria-labelledby="radix-:r6:-trigger-past" id="radix-:r6:-content-past" tabindex="0" class="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 mt-6"  hidden=""></div>
+    </div>
+  </div>
+</div>
+@endslot
+@end

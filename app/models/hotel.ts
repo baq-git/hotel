@@ -25,10 +25,10 @@ export default class Hotel extends BaseModel {
   @hasMany(() => Room)
   declare rooms: HasMany<typeof Room>;
 
-  @column.date()
+  @column.dateTime()
   declare checkinTime: DateTime;
 
-  @column.date()
+  @column.dateTime()
   declare checkoutTime: DateTime;
 
   @column.dateTime({ autoCreate: true })

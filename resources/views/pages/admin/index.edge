@@ -1,0 +1,66 @@
+@layout.app({ title: "Bookings Administration" })
+@slot('meta')
+<meta name="description" content="Booking management for Hotel">
+@endslot
+@slot('main')
+<div class="container mx-auto mt-24 p-4">
+  <h1 class="text-2xl font-bold mb-4">Hotel Bookings Admin</h1>
+  <div class="flex justify-between mb-4">
+    <label class="input input-sm max-w-36 input-bordered flex items-center gap-2">
+      <input type="text" class="grow" placeholder="Search booking..." />
+    </label>
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-outline btn-sm mb-2">
+        Payment Status
+      </div>
+      <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+        <li><a>Upcoming</a></li>
+        <li><a>Paid</a></li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <table class="table table-xs">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>User ID</th>
+          <th>Room ID</th>
+          <th>Total Price</th>
+          <th>Check-in Date</th>
+          <th>Check-out Date</th>
+          <th>Payment Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @each(booking in bookings)
+        @let(user = booking.user)
+        @let(room = booking.room)
+        @let(roomType = booking.room.roomType)
+        <tr class="hover:bg-base-200">
+          <td>{{booking.id}}</td>
+          <td>{{user.id}}</td>
+          <td>201</td>
+          <td>$150</td>
+          <td>{{convertDate(booking.checkinDate)}}</td>
+          <td>{{convertDate(booking.checkoutDate)}}</td>
+          <td>
+            <span class="badge-info p-1">
+              Upcoming
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-outline btn-xs">Edit</button>
+            <button class="btn btn-error btn-xs">Delete</button></td>
+        </tr>
+        @else
+        <p class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">Something is wrong or there is no data. Please try again</p>
+        @end
+      </tbody>
+    </table>
+  </div>
+  @!component('components/ui/pagination', { paginationProps })
+</div>
+@endslot
+@end

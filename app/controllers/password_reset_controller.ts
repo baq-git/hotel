@@ -26,18 +26,28 @@ export default class PasswordResetController {
           .subject('[OriHotel] - Reset your Password')
           .html(`Reset password <a href="${env.get('DOMAIN')}${resetLink}">click here</a>`);
       });
+
+      session.flash('notification', {
+        type: 'success',
+        message: 'Check your email to receive the reset link',
+      });
+
+      return response.redirect().back();
     }
-    session.flash(
-      'success',
-      'If an account matches the provided email, you will recieve a password reset link shortly'
-    );
-    return response.redirect().back();
+
+    if (!user) {
+      session.flash('notification', {
+        type: 'error',
+        message: 'Could not find your email, please try again.',
+      });
+
+      return response.redirect().back();
+    }
   }
 
   async reset({ view, params }: HttpContext) {
     const { token } = params;
     const isValid = await PasswordResetToken.verify(token);
-    logger.info(isValid);
     return view.render('pages/auth/password_reset', { isValid, token });
   }
 
@@ -47,7 +57,10 @@ export default class PasswordResetController {
     const user = await PasswordResetToken.getPasswordResetUser(token);
 
     if (!user) {
-      session.flash('error', 'Token expired or associated user could not be found');
+      session.flash('notification', {
+        type: 'error',
+        message: 'Token expired or associated user could not be found',
+      });
       return response.redirect().back();
     }
 

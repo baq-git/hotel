@@ -1,0 +1,7 @@
+@flashMessage('notification')
+@if($message.type === 'success')
+<p class="text-sm text-green-500">
+  {{ $message.message }}
+</p>
+@end
+@end

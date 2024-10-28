@@ -2,10 +2,10 @@
 @let(room = booking.room)
 <tr>
   <td>
-    {{booking.bookingId}}
+    {{booking.id}}
   </td>
   <td>
-    {{booking.createAt}}
+    {{convertDate(booking.createdAt)}}
   </td>
   <td>
     {{room.roomType.typeName}}
@@ -14,10 +14,10 @@
     {{room.roomNumber}}
   </td>
   <td>
-    {{booking.checkinDate}}
+    {{convertDate(booking.checkinDate)}}
   </td>
   <td>
-    {{booking.checkoutDate}}
+    {{convertDate(booking.checkoutDate)}}
   </td>
   <td>
     {{room.roomType.capacity}}

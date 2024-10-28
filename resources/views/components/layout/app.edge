@@ -6,11 +6,12 @@
       {{ title || "Adonisjs + HTMX" }}
     </title>
     @if ($slots.meta)
-      {{{ await $slots.meta() }}}
+    {{{ await $slots.meta() }}}
     @endif
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
   <body>
+    @let(hotel = (await preloadData.Hotel.all())[0])
     @include('partials/layout/navbar')
     <main>
       {{{ await $slots.main() }}}

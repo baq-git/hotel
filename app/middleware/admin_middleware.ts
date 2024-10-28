@@ -22,4 +22,3 @@ export default class AdminMiddleware {
     return output;
   }
 }
-

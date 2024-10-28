@@ -1,23 +1,21 @@
 import Booking from '#models/booking';
-import { DateTime } from 'luxon';
 
 export default class BookingService {
-  static convertDateTime(date: string) {
-    const dateTime = DateTime.fromFormat(date, 'MMM d, yyyy');
-    return dateTime;
+  static getAllBookings() {
+    return Booking.query()
+      .preload('user')
+      .preload('room', (queries) => queries.preload('roomType'))
+      .orderBy('createdAt', 'desc');
   }
 
-  static convertLocaleString(date: DateTime) {
-    return date?.toLocaleString(DateTime.DATE_MED);
-  }
-
-  static calcDiffDateTime(checkinDate: string, checkoutDate: string) {
-    const diffInDays = this.convertDateTime(checkoutDate).diff(this.convertDateTime(checkinDate), [
-      'days',
-      'hours',
-    ]);
-
-    return diffInDays;
+  static getBooking(id: string) {
+    return Booking.query()
+      .where('id', id)
+      .preload('room', (roomsQuery) => {
+        roomsQuery.preload('roomType');
+      })
+      .preload('user')
+      .first();
   }
 
   static getBookingsByRoomId(roomId: number) {
@@ -28,6 +26,11 @@ export default class BookingService {
   }
 
   static getBookingsByUserId(userId: number) {
-    return Booking.query().where('user_id', userId).preload('room').orderBy('id', 'asc');
+    return Booking.query()
+      .where('userId', userId)
+      .preload('room', (queries) => {
+        queries.preload('roomType');
+      })
+      .orderBy('id', 'asc');
   }
 }

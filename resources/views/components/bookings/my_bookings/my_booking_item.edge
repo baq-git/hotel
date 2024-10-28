@@ -1,0 +1,58 @@
+@let(room = booking.room)
+@let(roomType = booking.room.roomType)
+<div class="rounded-box bg-white shadow-lg mb-4">
+  <div class="p-6">
+    <div class="flex flex-col md:flex-row gap-4">
+      <img alt="Room Type" class="w-full md:w-40 h-24 object-cover rounded-md" src="https://picsum.photos/200" />
+      <div class="flex-grow">
+        <div class="flex justify-between items-start">
+          <div>
+            <h3 class="text-lg font-semibold">Twin Room</h3>
+            <p class="text-sm text-muted-foreground">Booking ID: #{{booking.id}}</p>
+          </div>
+          <div class="badge badge-info text-white">Upcoming</div>
+        </div>
+        <div class="grid grid-cols-2 gap-2 mt-2">
+          <div class="flex items-center gap-2">
+            @svg('iconoir:calendar', { height: 20, width: 20 })
+            <span class="text-sm">
+              {{convertDate(booking.checkinDate)}} - {{convertDate(booking.checkoutDate)}}
+            </span>
+          </div>
+          <div class="flex items-center gap-2">
+            @svg('iconoir:group', { height: 20, width: 20 })
+            <span class="text-sm">
+              {{roomType.capacity}} guests</span>
+          </div>
+          <div class="flex items-center gap-2">
+            @svg('iconoir:map-pin', { height: 20, width: 20 })
+            <span class="text-sm">2 guests</span>
+          </div>
+          <div class="flex items-center gap-2">
+            @svg('iconoir:clock', { height: 20, width: 20 })
+            <span class="text-sm">In - Out: {{convertTime(hotel.checkinTime)}}:00  -  {{convertTime(hotel.checkoutTime)}}:00 </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="p-6 pt-0 bg-muted/50 flex justify-between items-center">
+    <div class="text-lg font-semibold">
+      ${{booking.totalPrice}}
+    </div>
+    <div class="space-x-2">
+      <button class="btn btn-sm btn-primary">
+        @svg('iconoir:edit-pencil')
+        Button
+      </button>
+      <a href="{{route('bookings.show', {id: booking.id })}}" class="btn btn-sm btn-outline">
+        @svg('iconoir:arrow-up-right')
+        Check out
+      </a>
+      <button class="btn btn-sm btn-ghost">
+        @svg('iconoir:xmark-circle')
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
