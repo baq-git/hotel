@@ -1,0 +1,36 @@
+<div class="flex items-center justify-start gap-4 my-4">
+  <form action="">
+    <label class="input input-sm input-bordered flex items-center gap-2">
+      <input type="text" name="search" class="w-full" placeholder="Search room, user email, booking id" />
+      <span>
+        @svg('iconoir:search', {
+        width: 16,
+        height: 16,
+        })
+      </span>
+    </label>
+  </form>
+  <form action="">
+    <div class="flex items-center gap-2">
+      <span>Price:</span>
+      <label class="input input-sm w-20 input-bordered flex items-center gap-2">
+        <input type="number" name="roomnumber" class="w-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" placeholder="Min" />
+      </label>
+      <span>
+        -
+      </span>
+      <label class="input input-sm w-20 input-bordered flex items-center gap-2">
+        <input type="number" name="roomNumber" class="w-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" placeholder="Max" />
+      </label>
+      <button type="button" class="btn btn-sm btn-outline">Apply</button>
+    </div>
+  </form>
+  <select class="select select-sm select-bordered w-32">
+    <option disabled selected>Select Status</option>
+    <option>Homer</option>
+    <option>Marge</option>
+    <option>Bart</option>
+    <option>Lisa</option>
+    <option>Maggie</option>
+  </select>
+</div>

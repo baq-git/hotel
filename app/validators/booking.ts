@@ -9,3 +9,9 @@ export const createBookingValidator = vine.compile(
     checkoutDate: vine.date(),
   })
 );
+
+export const searchBookingValidator = vine.compile(
+  vine.object({
+    search: vine.string().optional(),
+  })
+);

@@ -1,19 +1,16 @@
 @let(roomType = room.roomType)
-
 @layout.app({ title: "Check Room Details" })
-  @slot('meta')
-    <meta name="description" content="Room Details" />
-  @endslot
-  <div class="font-sans relative my-28">
-    @include('components/rooms/show/details/index')
-
-    <div class="container mx-auto px-4 py-8">
-      <div class="grid md:grid-cols-2 gap-8">
-        @include('components/rooms/show/description/index')
-        @include('components/rooms/show/bookings/index')
-      </div>
+@slot('meta')
+<meta name="description" content="Room Details" />
+@endslot
+<div class="font-sans relative my-28">
+  @include('components/rooms/show/details/index')
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-2 gap-8">
+      @include('components/rooms/show/description/index')
+      @include('components/rooms/show/bookings/index')
     </div>
   </div>
 </div>
+</div>
 @end
-

@@ -1,11 +1,34 @@
 import Booking from '#models/booking';
+import User from '#models/user';
+import { searchBookingValidator } from '#validators/booking';
+import logger from '@adonisjs/core/services/logger';
+import { Infer } from '@vinejs/vine/types';
 
 export default class BookingService {
-  static getAllBookings() {
+  // static sortOptions() { }
+
+  static getBookingsWithFiltered(filters: Infer<typeof searchBookingValidator>) {
     return Booking.query()
+      .if(filters.search, (query) => {
+        query
+          .whereILike('id', `%${filters.search}%`)
+          .orWhereHas('user', (userQuery) => {
+            userQuery.whereILike('email', `%${filters.search}%`);
+          })
+          .orWhereHas('room', (roomQuery) => {
+            roomQuery.whereILike('roomNumber', `%${filters.search}%`);
+          });
+      })
       .preload('user')
-      .preload('room', (queries) => queries.preload('roomType'))
-      .orderBy('createdAt', 'desc');
+      .preload('room')
+      .orderBy('id', 'asc');
+  }
+
+  static getBookingsByRoomId(roomId: number) {
+    return Booking.query()
+      .where('room_id', roomId)
+      .preload('room', (roomsQuery) => roomsQuery.preload('roomType'))
+      .orderBy('id', 'asc');
   }
 
   static getBooking(id: string) {
@@ -16,13 +39,6 @@ export default class BookingService {
       })
       .preload('user')
       .first();
-  }
-
-  static getBookingsByRoomId(roomId: number) {
-    return Booking.query()
-      .where('room_id', roomId)
-      .preload('room', (roomsQuery) => roomsQuery.preload('roomType'))
-      .orderBy('id', 'asc');
   }
 
   static getBookingsByUserId(userId: number) {

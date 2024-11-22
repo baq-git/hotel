@@ -1,3 +1,5 @@
+@let(leftPages = paginationProps.leftPageUrls)
+@let(rightPages = paginationProps.rightPageUrls)
 @let(paginationUrls = paginationProps.paginationUrls)
 @let(previousPageUrl = paginationProps.previousPageUrl)
 @let(nextPageUrl = paginationProps.nextPageUrl)
@@ -6,15 +8,30 @@
     <a class="join-item btn btn-sm {{!!previousPageUrl || 'btn-disabled'}}" href={{`${previousPageUrl || ''}`}}>
       Previous
     </a>
-    @each(anchor in paginationUrls.slice(0, 3))
+    @each(anchor in leftPages)
     <a class="join-item btn btn-sm btn-square {{anchor.isActive && 'btn-primary'}}" href={{`/admin?page=${anchor.page}`}}>
       {{ anchor.page }}
     </a>
     @end
-    <a class="join-item btn btn-sm btn-square">
-      ...
-    </a>
-    @each(anchor in paginationUrls.slice(-3))
+    <button class="join-item btn btn-sm btn-square" onclick="my_modal_2.showModal()">...</button>
+    <dialog id="my_modal_2" class="modal">
+      <div class="modal-box">
+        <h6 class="text-center mb-2">
+          Select specific page number
+        </h6>
+        <div class="grid grid-cols-10 gap-2">
+          @each(anchor in paginationUrls)
+          <a href="{{`/admin?page=${anchor.page}`}}" class="btn btn-xs">
+            {{anchor.page}}
+          </a>
+          @end
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+    @each(anchor in rightPages)
     <a class="join-item btn btn-sm btn-square {{anchor.isActive && 'btn-primary'}}" href={{`/admin?page=${anchor.page}`}}>
       {{ anchor.page }}
     </a>

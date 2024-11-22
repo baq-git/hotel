@@ -1,0 +1,131 @@
+<table class="table table-xs">
+  <thead>
+    <tr class="h-10 bg-gray-200">
+      <th>ID</th>
+      <th>User</th>
+      <th>Room No.</th>
+      <th>
+        <div class="flex items-center gap-2 w-fit h-fit">
+
+          <span>Total Price</span>
+<label class="swap">
+  <!-- this hidden checkbox controls the state -->
+  <input type="checkbox" />
+
+  <!-- volume on icon -->
+  <svg
+    class="swap-on fill-current"
+    xmlns="http://www.w3.org/2000/svg"
+    width="48"
+    height="48"
+    viewBox="0 0 24 24">
+    <path
+      d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+  </svg>
+
+  <!-- volume off icon -->
+  <svg
+    class="swap-off fill-current"
+    xmlns="http://www.w3.org/2000/svg"
+    width="48"
+    height="48"
+    viewBox="0 0 24 24">
+    <path
+      d="M3,9H7L12,4V20L7,15H3V9M16.59,12L14,9.41L15.41,8L18,10.59L20.59,8L22,9.41L19.41,12L22,14.59L20.59,16L18,13.41L15.41,16L14,14.59L16.59,12Z" />
+  </svg>
+</label>
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="bg-transparent border-none shadow-none">
+              @svg('iconoir:sort', {
+              width: 16,
+              height: 16,
+              })
+            </div>
+            <ul tabindex="0" class="dropdown-content menu menu-xs p-1 bg-base-100 z-[1] shadow rounded-lg">
+              <li>
+                <a>
+                  @svg('iconoir:arrow-up', {
+                  width: 10,
+                  height: 10,
+                  })
+                  asc
+                </a>
+              </li>
+              <li>
+                <a>
+                  @svg('iconoir:arrow-down', {
+                  width: 10,
+                  height: 10,
+                  })
+                  dsc
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </th>
+      <th>Check-in Date</th>
+      <th>Check-out Date</th>
+      <th>
+        <div class="flex items-center gap-2 w-fit h-fit">
+          <span>Total Days</span>
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="bg-transparent border-none shadow-none">
+              @svg('iconoir:sort', {
+              width: 16,
+              height: 16,
+              })
+            </div>
+            <ul tabindex="0" class="dropdown-content menu menu-xs p-1 bg-base-100 z-[1] shadow rounded-lg">
+              <li>
+                <a>
+                  @svg('iconoir:arrow-up', {
+                  width: 10,
+                  height: 10,
+                  })
+                  asc
+                </a>
+              </li>
+              <li>
+                <a>
+                  @svg('iconoir:arrow-down', {
+                  width: 10,
+                  height: 10,
+                  })
+                  dsc
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </th>
+      <th>Payment Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @each(booking in bookings)
+    @let(user = booking.user)
+    @let(room = booking.room)
+    <tr class="hover:bg-base-200">
+      <td>{{booking.id}}</td>
+      <td>{{user.email}}</td>
+      <td>{{room.roomNumber}}</td>
+      <td>${{booking.totalPrice}}</td>
+      <td>{{convertDate(booking.checkinDate)}}</td>
+      <td>{{convertDate(booking.checkoutDate)}}</td>
+      <td>{{diffDate(booking.checkinDate, booking.checkoutDate)}}</td>
+      <td>
+        <span class="badge-info p-1">
+          Upcoming
+        </span>
+      </td>
+      <td>
+        <button class="btn btn-outline btn-xs">Edit</button>
+        <button class="btn btn-error btn-xs">Delete</button></td>
+    </tr>
+    @else
+    <p class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">Something is wrong or there is no data. Please try again</p>
+    @end
+  </tbody>
+</table>
